@@ -22,7 +22,10 @@ mongoose.connect(process.env.MONGO_URI, {
     .then(() => console.log('Connected to MongoDB'))
     .catch((err) => console.error('MongoDB connection error:', err));
 
-app.use(express.static('public'));
+app.use(express.static('public')); // Ensure this serves the 'public' directory
+
+// Add this line to explicitly serve the icons folder if needed
+app.use('/icons', express.static('public/icons'));
 
 io.on('connection', (socket) => {
     console.log('A user connected');
