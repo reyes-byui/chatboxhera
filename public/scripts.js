@@ -75,3 +75,19 @@ socket.on('connect_error', (err) => {
 socket.on('disconnect', () => {
     console.warn('Disconnected from server'); // Log disconnection
 });
+
+const darkIcon = document.getElementById('dark-icon');
+const lightIcon = document.getElementById('light-icon');
+
+// Toggle between dark and light themes
+darkIcon.addEventListener('click', () => {
+    document.body.classList.remove('light-mode'); // Remove light mode class
+    darkIcon.style.display = 'none'; // Hide dark icon
+    lightIcon.style.display = 'inline'; // Show light icon
+});
+
+lightIcon.addEventListener('click', () => {
+    document.body.classList.add('light-mode'); // Add light mode class
+    lightIcon.style.display = 'none'; // Hide light icon
+    darkIcon.style.display = 'inline'; // Show dark icon
+});

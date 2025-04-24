@@ -10,7 +10,7 @@
 
 body {
     background-color: var(--background-color);
-    color: var(--text-color); /* Apply text color variable */
+    color: var(--text-color);
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px; /* Remove padding to prevent overflow */
@@ -96,12 +96,12 @@ body {
 /* Light mode styles */
 .light-mode {
     --background-color: white;
-    --text-color: black; /* Ensure all fonts turn black */
+    --text-color: black;
     --chatbox-background: #f0f0f0;
     --messages-background: #e0e0e0;
     --input-background: #d0d0d0;
     --button-background: #c0c0c0;
-    --date-color: black; /* Ensure date text is also black */
+    --date-color: black;
 }
 
 #username {
