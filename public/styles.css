@@ -29,7 +29,7 @@ body {
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between; /* Ensure input stays at the bottom */
     padding: 20px;
 }
 
@@ -37,8 +37,9 @@ body {
     background-color: var(--messages-background);
     color: var(--text-color); /* Apply text color variable */
     border: 1px solid #ccc;
-    height: calc(100% - 80px);
+    flex: 1; /* Allow messages to take up available space */
     overflow-y: scroll;
+    margin-bottom: 10px; /* Add spacing between messages and input */
     padding: 10px;
     border-radius: 5px;
 }
@@ -46,27 +47,26 @@ body {
 #form {
     display: flex;
     width: 100%; /* Ensure the form takes the full width of the chatbox */
-    margin-top: 10px; /* Add some space above the form */
-    height: 50px;
+    margin-top: 10px;
 }
 
 #input {
     flex: 1; /* Allow the input box to stretch and fill available space */
     padding: 10px;
     background-color: var(--input-background);
-    color: var(--text-color); /* Apply text color variable */
+    color: var(--text-color);
     border: 1px solid #ccc;
     border-radius: 5px 0 0 5px; /* Rounded corners on the left */
-    box-sizing: border-box; /* Include padding and border in width calculation */
+    box-sizing: border-box;
 }
 
 #send {
     padding: 10px;
     background-color: var(--button-background);
-    color: var(--text-color); /* Apply text color variable */
+    color: var(--text-color);
     border: 1px solid #ccc;
     border-radius: 0 5px 5px 0; /* Rounded corners on the right */
-    box-sizing: border-box; /* Include padding and border in width calculation */
+    box-sizing: border-box;
 }
 
 .date {
