@@ -1,0 +1,28 @@
+{
+  "name": "chatboxhera",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reyes-byui/chatboxhera.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reyes-byui/chatboxhera/issues"
+  },
+  "homepage": "https://github.com/reyes-byui/chatboxhera#readme",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "http": "^0.0.1-security",
+    "mongoose": "^8.13.2",
+    "socket.io": "^4.8.1"
+  }
+}

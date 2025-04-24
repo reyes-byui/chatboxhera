@@ -1,0 +1,117 @@
+:root {
+    --background-color: black;
+    --text-color: white;
+    --chatbox-background: #222;
+    --messages-background: #333;
+    --input-background: #555;
+    --button-background: #444;
+    --date-color: #aaa;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color); /* Apply text color variable */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#chatbox {
+    background-color: var(--chatbox-background);
+    color: var(--text-color); /* Apply text color variable */
+    width: 50%;
+    max-width: 600px;
+    height: 90%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+#messages {
+    background-color: var(--messages-background);
+    color: var(--text-color); /* Apply text color variable */
+    border: 1px solid #ccc;
+    height: calc(100% - 80px);
+    overflow-y: scroll;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#form {
+    display: flex;
+    width: 100%; /* Ensure the form takes the full width of the chatbox */
+    margin-top: 10px; /* Add some space above the form */
+    height: 50px;
+}
+
+#input {
+    flex: 1; /* Allow the input box to stretch and fill available space */
+    padding: 10px;
+    background-color: var(--input-background);
+    color: var(--text-color); /* Apply text color variable */
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px; /* Rounded corners on the left */
+    box-sizing: border-box; /* Include padding and border in width calculation */
+}
+
+#send {
+    padding: 10px;
+    background-color: var(--button-background);
+    color: var(--text-color); /* Apply text color variable */
+    border: 1px solid #ccc;
+    border-radius: 0 5px 5px 0; /* Rounded corners on the right */
+    box-sizing: border-box; /* Include padding and border in width calculation */
+}
+
+.date {
+    color: var(--date-color); /* Apply date color variable */
+    text-align: center;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+#theme-toggle {
+    display: flex;
+    justify-content: flex-end; /* Align icons to the right */
+    margin-bottom: 10px; /* Add some space below the icons */
+}
+
+#theme-toggle img {
+    width: 30px; /* Set a fixed width for the icons */
+    height: 30px; /* Set a fixed height for the icons */
+    cursor: pointer; /* Change cursor to pointer for better UX */
+    transition: opacity 0.3s ease; /* Smooth transition for visibility changes */
+}
+
+#theme-toggle img[style*="display: none"] {
+    opacity: 0; /* Ensure hidden icons are not visible */
+}
+
+/* Light mode styles */
+.light-mode {
+    --background-color: white;
+    --text-color: black; /* Ensure all fonts turn black */
+    --chatbox-background: #f0f0f0;
+    --messages-background: #e0e0e0;
+    --input-background: #d0d0d0;
+    --button-background: #c0c0c0;
+    --date-color: black; /* Ensure date text is also black */
+}
+
+#username {
+    height: 40px; /* Increase the height of the chat name input */
+    padding: 10px; /* Add padding for better spacing */
+    font-size: 16px; /* Increase font size for better readability */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Add space below the input */
+    box-sizing: border-box; /* Include padding and border in height calculation */
+    background-color: var(--input-background);
+    color: var(--text-color);
+}
