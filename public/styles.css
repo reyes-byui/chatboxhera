@@ -87,6 +87,12 @@ body {
     height: 30px; /* Set a fixed height for the icons */
     cursor: pointer; /* Change cursor to pointer for better UX */
     transition: opacity 0.3s ease; /* Smooth transition for visibility changes */
+    border-radius: 50%; /* Add rounded corners for better appearance */
+}
+
+#light-icon, #dark-icon {
+    background-color: white; /* Add white background to make it visible in dark mode */
+    padding: 5px; /* Add padding for better spacing */
 }
 
 #theme-toggle img[style*="display: none"] {
