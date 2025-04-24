@@ -14,6 +14,7 @@ const io = new Server(server, {
     },
 });
 
+mongoose.set('debug', true); // Enable Mongoose debugging
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
