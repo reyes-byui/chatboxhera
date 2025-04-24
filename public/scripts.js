@@ -49,7 +49,8 @@ socket.on('chat history', (data) => {
 
         const usernameColor = getUsernameColor(msg.username); // Get color for username
         const item = document.createElement('div');
-        item.innerHTML = `<span style="color: ${usernameColor}">[${msg.timestamp}] ${msg.username}:</span> ${linkify(msg.message)}`; // Use linkify to render URLs
+        item.classList.add('message'); // Add a class for styling
+        item.innerHTML = `<span style="color: ${usernameColor}">[${msg.timestamp}] ${msg.username}:</span> ${linkify(msg.message)}`;
         messages.appendChild(item);
     });
 });
@@ -78,6 +79,7 @@ socket.on('chat message', (msg) => {
 
     const usernameColor = getUsernameColor(msg.username); // Get color for username
     const item = document.createElement('div');
+    item.classList.add('message'); // Add a class for styling
     item.innerHTML = `<span style="color: ${usernameColor}">[${msg.timestamp}] ${msg.username}:</span> ${msg.message}`;
     messages.appendChild(item);
     messages.scrollTop = messages.scrollHeight;
