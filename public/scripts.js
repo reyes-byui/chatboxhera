@@ -3,6 +3,7 @@ const messages = document.getElementById('messages');
 const form = document.getElementById('form');
 const input = document.getElementById('input');
 const usernameInput = document.getElementById('username');
+const mediaInput = document.getElementById('media');
 let currentDate = '';
 
 // Helper function to convert URLs in text to clickable links
@@ -36,40 +37,32 @@ socket.on('chat history', (data) => {
     });
 });
 
-// Display new messages
-socket.on('chat message', (msg) => {
-    if (!msg.timestamp || !msg.username || !msg.message) {
-        console.error('Invalid new message received:', msg); // Log invalid messages
-        return;
-    }
-
-    const newDate = new Date().toLocaleDateString();
-    if (newDate !== currentDate) {
-        currentDate = newDate;
-        const dateItem = document.createElement('div');
-        dateItem.textContent = `Date: ${currentDate}`;
-        dateItem.classList.add('date'); // Add a class for styling
-        messages.appendChild(dateItem);
-    }
-
-    const item = document.createElement('div');
-    item.innerHTML = `[${msg.timestamp}] ${msg.username}: ${linkify(msg.message)}`; // Use linkify to render URLs
-    messages.appendChild(item);
-    messages.scrollTop = messages.scrollHeight;
-});
-
 // Send message
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     const username = usernameInput.value.trim();
+    const message = input.value.trim();
+
     if (!username) {
         alert('Please enter a username before sending a message.');
         return;
     }
-    if (input.value) {
-        socket.emit('chat message', { username, message: input.value });
-        input.value = '';
+
+    socket.emit('chat message', { username, message });
+    input.value = ''; // Clear the input field
+});
+
+// Display new messages
+socket.on('chat message', (msg) => {
+    if (!msg.timestamp || !msg.username || !msg.message) {
+        console.error('Invalid new message received:', msg);
+        return;
     }
+
+    const item = document.createElement('div');
+    item.textContent = `[${msg.timestamp}] ${msg.username}: ${msg.message}`;
+    messages.appendChild(item);
+    messages.scrollTop = messages.scrollHeight;
 });
 
 // Handle connection errors

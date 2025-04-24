@@ -27,6 +27,7 @@ app.use(express.static('public')); // Ensure this serves the 'public' directory
 // Add this line to explicitly serve the icons folder if needed
 app.use('/icons', express.static('public/icons'));
 
+// Handle incoming messages
 io.on('connection', (socket) => {
     console.log('A user connected');
 
@@ -40,7 +41,6 @@ io.on('connection', (socket) => {
             console.error('Error fetching chat history:', err); // Log errors
         });
 
-    // Handle incoming messages
     socket.on('chat message', (msg) => {
         if (!msg.username || !msg.message) {
             console.error('Invalid message received:', msg); // Log invalid messages
@@ -48,7 +48,11 @@ io.on('connection', (socket) => {
         }
 
         const timestamp = new Date().toLocaleTimeString('en-US', { hour12: false }); // Format timestamp to HH:MM:SS
-        const chatMessage = new Chat({ username: msg.username, message: msg.message, timestamp });
+        const chatMessage = new Chat({
+            username: msg.username,
+            message: msg.message,
+            timestamp,
+        });
 
         chatMessage
             .save()

@@ -4,6 +4,6 @@ const chatSchema = new mongoose.Schema({
     username: { type: String, required: true },
     message: { type: String, required: true },
     timestamp: { type: String, required: true },
-}, { collection: 'chats' }); // Explicitly set the collection name
+}, { collection: 'chats' });
 
 module.exports = mongoose.model('Chat', chatSchema);
