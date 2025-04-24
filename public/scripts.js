@@ -6,6 +6,22 @@ const usernameInput = document.getElementById('username');
 const mediaInput = document.getElementById('media');
 let currentDate = '';
 
+// Store username-to-color mapping
+const usernameColors = {};
+
+// Helper function to generate a random color
+function getRandomColor() {
+    return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+}
+
+// Helper function to get or assign a color to a username
+function getUsernameColor(username) {
+    if (!usernameColors[username]) {
+        usernameColors[username] = getRandomColor();
+    }
+    return usernameColors[username];
+}
+
 // Helper function to convert URLs in text to clickable links
 function linkify(text) {
     const urlRegex = /(https?:\/\/[^\s]+)/g; // Match URLs starting with http or https
@@ -31,8 +47,9 @@ socket.on('chat history', (data) => {
             return;
         }
 
+        const usernameColor = getUsernameColor(msg.username); // Get color for username
         const item = document.createElement('div');
-        item.innerHTML = `[${msg.timestamp}] ${msg.username}: ${linkify(msg.message)}`; // Use linkify to render URLs
+        item.innerHTML = `<span style="color: ${usernameColor}">[${msg.timestamp}] ${msg.username}:</span> ${linkify(msg.message)}`; // Use linkify to render URLs
         messages.appendChild(item);
     });
 });
@@ -59,8 +76,9 @@ socket.on('chat message', (msg) => {
         return;
     }
 
+    const usernameColor = getUsernameColor(msg.username); // Get color for username
     const item = document.createElement('div');
-    item.textContent = `[${msg.timestamp}] ${msg.username}: ${msg.message}`;
+    item.innerHTML = `<span style="color: ${usernameColor}">[${msg.timestamp}] ${msg.username}:</span> ${msg.message}`;
     messages.appendChild(item);
     messages.scrollTop = messages.scrollHeight;
 });
