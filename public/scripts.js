@@ -1,10 +1,8 @@
-const socket = io();
+const socket = io(); // Ensure this connects to the backend WebSocket server
 const messages = document.getElementById('messages');
 const form = document.getElementById('form');
 const input = document.getElementById('input');
 const usernameInput = document.getElementById('username');
-const darkIcon = document.getElementById('dark-icon');
-const lightIcon = document.getElementById('light-icon');
 let currentDate = '';
 
 // Display chat history
@@ -76,17 +74,4 @@ socket.on('connect_error', (err) => {
 // Handle disconnection
 socket.on('disconnect', () => {
     console.warn('Disconnected from server'); // Log disconnection
-});
-
-// Toggle between dark and light themes
-darkIcon.addEventListener('click', () => {
-    document.body.classList.remove('light-mode');
-    darkIcon.style.display = 'none';
-    lightIcon.style.display = 'inline';
-});
-
-lightIcon.addEventListener('click', () => {
-    document.body.classList.add('light-mode');
-    lightIcon.style.display = 'none';
-    darkIcon.style.display = 'inline';
 });
