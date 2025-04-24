@@ -121,3 +121,40 @@ body {
     background-color: var(--input-background);
     color: var(--text-color);
 }
+/* Ensure proper scaling on mobile devices */
+@media (max-width: 768px) {
+    #chatbox {
+        width: 100%; /* Use full width for smaller screens */
+        height: 90%; /* Adjust height for better fit */
+        padding: 10px; /* Reduce padding for smaller screens */
+    }
+
+    #messages {
+        height: calc(100% - 70px); /* Adjust height to fit within the chatbox */
+        padding: 5px; /* Reduce padding for smaller screens */
+    }
+
+    #form {
+        height: 40px; /* Reduce form height for smaller screens */
+    }
+
+    #input {
+        padding: 8px; /* Adjust padding for better fit */
+        font-size: 14px; /* Reduce font size for smaller screens */
+    }
+
+    #send {
+        padding: 8px; /* Adjust padding for better fit */
+        font-size: 14px; /* Reduce font size for smaller screens */
+    }
+
+    #username {
+        font-size: 14px; /* Adjust font size for better readability */
+        padding: 8px; /* Adjust padding for smaller screens */
+    }
+
+    #theme-toggle img {
+        width: 25px; /* Reduce icon size for smaller screens */
+        height: 25px; /* Reduce icon size for smaller screens */
+    }
+}

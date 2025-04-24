@@ -1,9 +1,15 @@
-const socket = io(); // Ensure this connects to the backend WebSocket server
+const socket = io();
 const messages = document.getElementById('messages');
 const form = document.getElementById('form');
 const input = document.getElementById('input');
 const usernameInput = document.getElementById('username');
 let currentDate = '';
+
+// Helper function to convert URLs in text to clickable links
+function linkify(text) {
+    const urlRegex = /(https?:\/\/[^\s]+)/g; // Match URLs starting with http or https
+    return text.replace(urlRegex, (url) => `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`);
+}
 
 // Display chat history
 socket.on('chat history', (data) => {
@@ -25,7 +31,7 @@ socket.on('chat history', (data) => {
         }
 
         const item = document.createElement('div');
-        item.textContent = `[${msg.timestamp}] ${msg.username}: ${msg.message}`;
+        item.innerHTML = `[${msg.timestamp}] ${msg.username}: ${linkify(msg.message)}`; // Use linkify to render URLs
         messages.appendChild(item);
     });
 });
@@ -47,7 +53,7 @@ socket.on('chat message', (msg) => {
     }
 
     const item = document.createElement('div');
-    item.textContent = `[${msg.timestamp}] ${msg.username}: ${msg.message}`;
+    item.innerHTML = `[${msg.timestamp}] ${msg.username}: ${linkify(msg.message)}`; // Use linkify to render URLs
     messages.appendChild(item);
     messages.scrollTop = messages.scrollHeight;
 });
